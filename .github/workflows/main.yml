@@ -13,9 +13,6 @@ jobs:
       - name: Build image
         run: make compose-build
 
-      - name: Install dependencies
-        run: make compose-install
-
       - name: Run linter
         run: make compose-lint-ci
 
