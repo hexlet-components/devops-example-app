@@ -1,0 +1,21 @@
+globals:
+  page: true
+
+env:
+  browser: true
+  es2021: true
+  jest/globals: true
+
+extends:
+  - 'airbnb'
+  - 'plugin:jest/recommended'
+
+settings:
+  react:
+    version: latest
+
+parserOptions:
+  ecmaVersion: 12
+  sourceType: module
+
+rules: {}
