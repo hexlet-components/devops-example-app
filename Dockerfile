@@ -2,6 +2,6 @@ FROM node:15
 
 WORKDIR /app
 
-COPY . .
+RUN npm install -g npm@7.12.1
 
-CMD ["npm", "run", "dev"]
+COPY . .

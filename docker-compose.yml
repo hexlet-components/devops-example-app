@@ -1,0 +1,10 @@
+version: "3"
+services:
+  application:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 5000:5000
+    command: make start
