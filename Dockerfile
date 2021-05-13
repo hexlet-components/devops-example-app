@@ -1,7 +1,9 @@
-FROM node:15
+FROM node:14.17.0-alpine3.12
+
+RUN apk add --no-cache bash make
 
 WORKDIR /app
 
-RUN npm install -g npm@7.12.1
-
 COPY . .
+
+CMD ["npm", "start"]
