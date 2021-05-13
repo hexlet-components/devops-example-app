@@ -12,7 +12,6 @@ compose-bash:
 compose-lint:
 	docker-compose run app make lint
 
-# FIXME: Починить тесты при запуске в контейнере
 compose-test:
 	docker-compose run app make test
 
@@ -35,4 +34,4 @@ lint:
 	npx eslint .
 
 test:
-	npm test -s
+	npm test
