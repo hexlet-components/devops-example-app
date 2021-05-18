@@ -18,12 +18,12 @@ const registerErrorHandler = (app) => {
     const { message: errorMessage } = error;
     reply.view('500', { errorMessage });
 
-    // if (!ROLLBAR_TOKEN) {
-    //   return;
-    // }
+    if (!ROLLBAR_TOKEN) {
+      return;
+    }
 
     const rollbar = new Rollbar({
-      accessToken: process.env.ROLLBAR_TOKEN,
+      accessToken: ROLLBAR_TOKEN,
       captureUncaught: true,
       captureUnhandledRejections: true
     });
