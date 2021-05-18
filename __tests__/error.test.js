@@ -1,5 +1,4 @@
 const supertest = require('supertest');
-const _ = require('lodash');
 
 const getApp = require('../server/index.js');
 
@@ -16,8 +15,8 @@ describe('app', () => {
       .get('/error')
       .expect(500);
 
-      expect(res.text).toMatch('Внимание, тут что-то не так!');
-      expect(res.text).toMatch('Oops! Something went wrong!');
+    expect(res.text).toMatch('Внимание, тут что-то не так!');
+    expect(res.text).toMatch('Oops! Something went wrong!');
   });
 
   afterAll(() => {
