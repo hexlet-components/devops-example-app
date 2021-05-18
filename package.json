@@ -16,14 +16,19 @@
     "fastify-static": "^4.0.1",
     "lodash": "^4.17.21",
     "point-of-view": "^4.14.0",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "rollbar": "^2.21.1"
   },
   "devDependencies": {
+    "dotenv": "^9.0.2",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.3.6",
     "jest": "^26.6.3",
     "supertest": "^6.1.3"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

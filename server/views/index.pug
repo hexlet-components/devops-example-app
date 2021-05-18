@@ -6,4 +6,7 @@ block content
       .card-body.p-5.bg-light
         .display-4 Привет от Хекслета!
         hr
-        p.lead Приложение запущено на сервере с IP: !{serverIp}
+        if serverMessage
+          p.lead Приложение запущено и передает сообщение: !{serverMessage}
+        else
+          p.lead Приложение запущено, но сообщение сервера не установлено!
