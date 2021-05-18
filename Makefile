@@ -1,4 +1,4 @@
-compose-setup: compose-build compose-install
+compose-setup: env-prepare compose-build compose-install
 
 compose-build:
 	docker-compose build
@@ -30,8 +30,10 @@ compose-down:
 compose-push:
 	docker-compose -f docker-compose.yml push app
 
+setup: env-prepare install
+
 install:
-	npm install
+	npm ci
 
 start:
 	npm start
@@ -41,3 +43,6 @@ lint:
 
 test:
 	npm test
+
+env-prepare:
+	cp -n .env.example .env || true

@@ -1,11 +1,12 @@
 # devops-example-app
 
-This is a simple node application that shows on the main page IP address of the server on which it is running.
+This is a simple node application that shows on the main page server on which it is running and report errors to [Rollbar](https://rollbar.com/).
 
 ## Requirements
 
-* Node 15.x
+* Node 14.x
 * Make
+
 ## Install
 
 ```sh
@@ -19,10 +20,17 @@ make start
 # open http://0.0.0.0:5000 in browser
 ```
 
-You may pass environment variable `SERVER_IP`, and its value shows on the main page.
+You may pass environment variable `SERVER_MESSAGE`, and its value shows on the main page.
+
+Edit *.env* file to set up environment variables.
+
+```env
+SERVER_MESSAGE="Hexlet Awesome Server"
+ROLLBAR_TOKEN=<your token>
+```
 
 ```sh
-SERVER_IP="Hexlet Awesome Server" make start
+make start
 # open http://0.0.0.0:5000 in browser
 ```
 
