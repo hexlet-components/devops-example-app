@@ -21,18 +21,18 @@ describe('app', () => {
       .expect(200);
 
     expect(res.text).toMatch('Привет от Хекслета!');
-    expect(res.text).toMatch('Приложение запущено на сервере с IP: не определен');
+    expect(res.text).toMatch('Приложение запущено, но сообщение сервера не установлено!');
   });
 
   it('main page with environment variable SERVER_MESSAGE', async () => {
-    process.env.SERVER_MESSAGE = '10.11.12.13';
+    process.env.SERVER_MESSAGE = 'Hexlet Awesome Server';
 
     const res = await supertest(app.server)
       .get('/')
       .expect(200);
 
     expect(res.text).toMatch('Привет от Хекслета!');
-    expect(res.text).toMatch(`Приложение запущено на сервере с IP: ${process.env.SERVER_MESSAGE}`);
+    expect(res.text).toMatch(`Приложение запущено и передает сообщение: ${process.env.SERVER_MESSAGE}`);
   });
 
   afterAll(() => {

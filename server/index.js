@@ -7,30 +7,28 @@ const pointOfView = require('point-of-view');
 const fastifyStatic = require('fastify-static');
 const fatifyReverseRoutes = require('fastify-reverse-routes');
 const Rollbar = require('rollbar');
-require('dotenv').config()
-
+require('dotenv').config();
 
 const addRoutes = require('./routes.js');
 
 const registerErrorHandler = (app) => {
-  app.setErrorHandler(function (error, request, reply) {
+  app.setErrorHandler((error, request, reply) => {
     const { ROLLBAR_TOKEN } = process.env;
     const { message: errorMessage } = error;
     reply.view('500', { errorMessage });
 
-    // if (!ROLLBAR_TOKEN) {
-    //   return;
-    // }
+    if (!ROLLBAR_TOKEN) {
+      return;
+    }
 
     const rollbar = new Rollbar({
-      accessToken: process.env.ROLLBAR_TOKEN,
+      accessToken: ROLLBAR_TOKEN,
       captureUncaught: true,
-      captureUnhandledRejections: true
+      captureUnhandledRejections: true,
     });
 
     rollbar.error(errorMessage);
-  })
-
+  });
 };
 
 const registerPlugins = (app) => {

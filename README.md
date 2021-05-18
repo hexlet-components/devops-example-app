@@ -1,4 +1,6 @@
-# devops-example-app
+# DevOps example app
+
+![CI status](https://github.com/hexlet-components/devops-example-app/actions/workflows/main.yml/badge.svg)
 
 This is a simple node application that shows on the main page server on which it is running and report errors to [Rollbar](https://rollbar.com/).
 
@@ -10,14 +12,7 @@ This is a simple node application that shows on the main page server on which it
 ## Install
 
 ```sh
-make install
-```
-
-## Start application
-
-```sh
-make start
-# open http://0.0.0.0:5000 in browser
+make setup
 ```
 
 You may pass environment variable `SERVER_MESSAGE`, and its value shows on the main page.
@@ -28,6 +23,8 @@ Edit *.env* file to set up environment variables.
 SERVER_MESSAGE="Hexlet Awesome Server"
 ROLLBAR_TOKEN=<your token>
 ```
+
+## Start application
 
 ```sh
 make start

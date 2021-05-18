@@ -21,6 +21,9 @@ compose-test:
 compose-test-ci:
 	docker-compose -f docker-compose.yml run app make test
 
+compose-console:
+	docker-compose run --rm app bash
+
 compose:
 	docker-compose up --abort-on-container-exit
 
@@ -40,6 +43,10 @@ start:
 
 lint:
 	npx eslint .
+
+lint-fix:
+	npx eslint . --fix
+
 
 test:
 	npm test

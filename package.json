@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.0.1",
+    "dotenv": "^9.0.2",
     "fastify": "^3.15.1",
     "fastify-reverse-routes": "^3.0.0",
     "fastify-static": "^4.0.1",
@@ -20,7 +21,6 @@
     "rollbar": "^2.21.1"
   },
   "devDependencies": {
-    "dotenv": "^9.0.2",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
