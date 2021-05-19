@@ -31,6 +31,7 @@ compose-down:
 	docker-compose down -v --remove-orphans
 
 compose-push:
+	docker-compose -f docker-compose.yml build
 	docker-compose -f docker-compose.yml push app
 
 setup: env-prepare install
