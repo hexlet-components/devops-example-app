@@ -2,7 +2,7 @@
 
 const getApp = require('../index.js');
 
-const port = process.env.APP_PORT || 5000;
+const port = process.env.PORT || 5000;
 const host = '0.0.0.0';
 
 getApp().listen(port, host, () => {
