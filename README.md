@@ -4,6 +4,13 @@
 
 This is a simple node application that shows on the main page server on which it is running and report errors to [Rollbar](https://rollbar.com/).
 
+## Usage
+
+```shell
+docker run -p 5000:5000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOKEN="<your token>" hexletcomponents/devops-example-app
+# open http://0.0.0.0:5000 in browser
+ ```
+
 ## Requirements
 
 * Node 14.x
