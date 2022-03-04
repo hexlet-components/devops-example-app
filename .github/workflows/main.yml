@@ -19,3 +19,6 @@ jobs:
 
       - name: Run tests
         run: make compose-test-ci
+
+      - name: push
+        run: make docker-push
