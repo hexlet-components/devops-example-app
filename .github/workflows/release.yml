@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-buildx-action@v1
+
       - run: docker pull hexletcomponents/devops-example-app:latest
       - run: make compose-test-ci
       - run: make compose-lint-ci
