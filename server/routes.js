@@ -1,6 +1,6 @@
 // @ts-check
 
-module.exports = (app) => {
+export default (app) => {
   app.get('/', { name: 'root' }, (req, reply) => {
     const serverMessage = process.env.SERVER_MESSAGE;
 

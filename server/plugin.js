@@ -1,15 +1,16 @@
 // @ts-check
 
-const path = require('path');
-const fastify = require('fastify');
-const Pug = require('pug');
-const pointOfView = require('point-of-view');
-const fastifyStatic = require('fastify-static');
-const fatifyReverseRoutes = require('fastify-reverse-routes');
-const Rollbar = require('rollbar');
-require('dotenv').config();
+import { fileURLToPath } from 'url';
+import path from 'path';
+import Pug from 'pug';
+import pointOfView from 'point-of-view';
+import fastifyStatic from 'fastify-static';
+import fastifyReverseRoutes from 'fastify-reverse-routes';
+import Rollbar from 'rollbar';
 
-const addRoutes = require('./routes.js');
+import addRoutes from './routes.js';
+
+const __dirname = fileURLToPath(path.dirname(import.meta.url));
 
 const registerErrorHandler = (app) => {
   app.setErrorHandler((error, request, reply) => {
@@ -33,7 +34,7 @@ const registerErrorHandler = (app) => {
 
 const registerPlugins = (app) => {
   app
-    .register(fatifyReverseRoutes.plugin)
+    .register(fastifyReverseRoutes.plugin)
     .register(fastifyStatic, {
       root: path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist'),
       prefix: '/assets/',
@@ -47,11 +48,8 @@ const registerPlugins = (app) => {
     });
 };
 
-module.exports = () => {
-  const app = fastify({
-    logger: true,
-  });
-
+// eslint-disable-next-line no-unused-vars
+export default (app, options) => {
   registerPlugins(app);
   addRoutes(app);
   registerErrorHandler(app);

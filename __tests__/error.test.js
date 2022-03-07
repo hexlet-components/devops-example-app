@@ -1,12 +1,14 @@
-const supertest = require('supertest');
+import supertest from 'supertest';
+import fastify from 'fastify';
 
-const getApp = require('../server/index.js');
+import init from '../server/plugin.js';
 
 describe('app', () => {
   let app;
 
   beforeAll(async () => {
-    app = getApp();
+    app = fastify();
+    await init(app);
     await app.ready();
   });
 
