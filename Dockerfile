@@ -1,6 +1,4 @@
-FROM node:14.17.0-alpine3.12
-
-RUN apk add --no-cache bash make
+FROM node:17
 
 WORKDIR /app
 

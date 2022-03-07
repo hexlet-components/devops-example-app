@@ -1,0 +1,12 @@
+name: pull_request
+
+on:
+  - pull_request
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: make compose-test-ci
+      - run: make compose-lint-ci
