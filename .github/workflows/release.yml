@@ -1,0 +1,29 @@
+name: pull_request
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: docker pull hexletcomponents/devops-example-app:latest
+      - run: make compose-test-ci
+      - run: make compose-lint-ci
+
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: hexletcomponents/devops-example-app:${{github.ref_name}}
