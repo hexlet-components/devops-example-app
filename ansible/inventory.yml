@@ -1,0 +1,8 @@
+---
+
+all:
+  children:
+    webservers:
+      hosts:
+        web1:
+          ansible_host: 65.108.149.193

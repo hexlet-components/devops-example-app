@@ -1,0 +1,34 @@
+---
+
+- hosts: all
+  gather_facts: no
+  tasks:
+
+    - apt:
+        name: python3-pip
+        update_cache: yes
+        cache_valid_time: 604800 # 1 week
+
+    - pip:
+        name: docker
+
+    # - community.docker.docker_login:
+    #     username:
+    #     password:
+
+    - community.docker.docker_container:
+        name: app
+        # Обязатлеьно указываем тег, который хотим деплоить
+        # Если образа на сервере нет, Ansible его автоматически скачает
+        image: "ghcr.io/hexletcomponents/docker-example-app:{{ version }}"
+        # Подключаем супервизор
+        # Если контейнер остановится, например, из-за ошибок
+        # супервизор докера его перезапустить
+        restart_policy: always
+        # Запускаем если не запущен
+        state: started
+        # Делаем доступным снаружи
+        ports:
+          - 5000:5000
+        env: # Настраиваем
+          NODE_ENV: production

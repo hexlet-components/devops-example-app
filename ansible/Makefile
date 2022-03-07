@@ -1,0 +1,2 @@
+deploy:
+	ansible-playbook release.yml -i inventory.yml --extra-vars="version=v${V}" -vv

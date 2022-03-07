@@ -3,4 +3,4 @@ version: "3"
 services:
   app:
     build: .
-    image: hexletcomponents/devops-example-app
+    image: ghcr.io/hexletcomponents/devops-example-app
