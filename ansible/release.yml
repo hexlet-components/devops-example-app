@@ -20,7 +20,7 @@
         name: app
         # Обязатлеьно указываем тег, который хотим деплоить
         # Если образа на сервере нет, Ansible его автоматически скачает
-        image: "ghcr.io/hexletcomponents/docker-example-app:{{ version }}"
+        image: "ghcr.io/hexlet-components/docker-example-app:{{ version }}"
         # Подключаем супервизор
         # Если контейнер остановится, например, из-за ошибок
         # супервизор докера его перезапустить
