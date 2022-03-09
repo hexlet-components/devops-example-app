@@ -7,8 +7,8 @@ This is a simple node application that shows on the main page server on which it
 ## Usage
 
 ```shell
-docker run -p 5000:5000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOKEN="<your token>" hexletcomponents/devops-example-app
-# open http://0.0.0.0:5000 in browser
+docker run -p 3000:3000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOKEN="<your token>" hexletcomponents/devops-example-app
+# open http://0.0.0.0:3000 in browser
  ```
 
 ## Requirements
@@ -35,7 +35,7 @@ ROLLBAR_TOKEN=<your token>
 
 ```sh
 make start
-# open http://0.0.0.0:5000 in browser
+# open http://0.0.0.0:3000 in browser
 ```
 
 ![Screen of devops-example-app](assets/app.png)

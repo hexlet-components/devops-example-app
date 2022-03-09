@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
-    "start": "fastify start server/plugin.js -l info -P"
+    "start": "fastify start server/plugin.js -a 0.0.0.0 -l info -P"
   },
   "author": "Hexlet",
   "license": "ISC",
