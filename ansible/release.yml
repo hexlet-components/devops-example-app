@@ -12,6 +12,9 @@
     - pip:
         name: docker
 
+    - docker_network:
+        name: devops-example
+
     - community.docker.docker_container:
         name: app
         # Обязатлеьно указываем тег, который хотим деплоить
@@ -23,6 +26,8 @@
         restart_policy: always
         # Запускаем если не запущен
         state: started
+        networks:
+          - devops-example
         # Делаем доступным снаружи
         ports:
           - 3000:3000
@@ -34,6 +39,8 @@
         image: caddy
         restart_policy: always
         state: started
+        networks:
+          - devops-example
         ports:
           - 80:80
           - 443:443
