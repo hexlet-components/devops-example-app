@@ -1,4 +1,4 @@
 FROM caddy
 
-COPY services/caddy/Caddyfile /etc/caddy/Caddyfile
+COPY services/caddy/Caddyfile /etc/caddy/
 COPY . /app
