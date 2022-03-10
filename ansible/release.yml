@@ -4,15 +4,7 @@
   gather_facts: no
   tasks:
 
-    - apt:
-        name: python3-pip
-        update_cache: yes
-        cache_valid_time: 604800 # 1 week
-
-    - pip:
-        name: docker
-
-    - docker_network:
+    - community.docker.docker_network:
         name: devops-example
 
     - community.docker.docker_container:
@@ -27,7 +19,7 @@
         # Запускаем если не запущен
         state: started
         networks:
-          - devops-example
+          - name: devops-example
         # Делаем доступным снаружи
         ports:
           - 3000:3000
@@ -40,7 +32,7 @@
         restart_policy: always
         state: started
         networks:
-          - devops-example
+          - name: devops-example
         ports:
           - 80:80
           - 443:443
