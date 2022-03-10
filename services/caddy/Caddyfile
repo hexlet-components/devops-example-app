@@ -1,0 +1,14 @@
+localhost
+
+log {
+	format single_field common_log
+}
+
+handle /images/* {
+	file_server
+	root * /app/public
+}
+
+handle {
+	reverse_proxy app:3000
+}

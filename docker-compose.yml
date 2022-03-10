@@ -4,3 +4,9 @@ services:
   app:
     build: .
     image: hexletcomponents/devops-example-app
+
+  caddy:
+    build:
+      context: .
+      dockerfile: services/caddy/Dockerfile
+    image: hexletcomponents/devops-example-caddy
