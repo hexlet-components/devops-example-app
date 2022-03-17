@@ -39,6 +39,11 @@ const registerPlugins = (app) => {
       root: path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist'),
       prefix: '/assets/',
     })
+    .register(fastifyStatic, {
+      root: path.join(__dirname, '..', 'public'),
+      prefix: '/',
+      decorateReply: false,
+    })
     .register(pointOfView, {
       engine: {
         pug: Pug,
