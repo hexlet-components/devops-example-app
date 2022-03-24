@@ -36,7 +36,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          # platforms: linux/amd64,linux/arm64
           push: true
           tags: hexletcomponents/devops-example-app:latest
 
@@ -45,6 +44,5 @@ jobs:
         with:
           context: .
           file: services/caddy/Dockerfile
-          # platforms: linux/amd64,linux/arm64
           push: true
           tags: hexletcomponents/devops-example-caddy:latest
