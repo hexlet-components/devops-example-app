@@ -6,7 +6,7 @@ This is a simple node application that shows on the main page server on which it
 
 ## Usage
 
-```shell
+```bash
 docker run -p 3000:3000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOKEN="<your token>" hexletcomponents/devops-example-app
 # open http://0.0.0.0:3000 in browser
  ```
@@ -18,7 +18,7 @@ docker run -p 3000:3000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOK
 
 ## Install
 
-```sh
+```bash
 make setup
 ```
 
@@ -33,7 +33,7 @@ ROLLBAR_TOKEN=<your token>
 
 ## Start application
 
-```sh
+```bash
 make start
 # open http://0.0.0.0:3000 in browser
 ```
@@ -41,6 +41,9 @@ make start
 ![Screen of devops-example-app](assets/app.png)
 
 ---
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=devops-example-app)
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=devops-example-app).
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://hexlet.io?utm_source=github&utm_medium=link&utm_campaign=devops-example-app)
+
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet](https://hexlet.io?utm_source=github&utm_medium=link&utm_campaign=devops-example-app).
+
+See most active contributors on [hexlet-friends](https://friends.hexlet.io/).
