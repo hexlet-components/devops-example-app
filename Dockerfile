@@ -1,4 +1,4 @@
-FROM node:17-slim
+FROM node:20-slim
 
 RUN apt-get update && apt-get install -y make
 
@@ -9,4 +9,4 @@ RUN npm ci
 
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["bin/start.sh"]

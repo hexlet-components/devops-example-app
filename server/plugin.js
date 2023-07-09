@@ -4,8 +4,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import Pug from 'pug';
 import pointOfView from 'point-of-view';
-import fastifyStatic from 'fastify-static';
-import fastifyReverseRoutes from 'fastify-reverse-routes';
+import fastifyStatic from '@fastify/static';
 import Rollbar from 'rollbar';
 
 import addRoutes from './routes.js';
@@ -34,7 +33,6 @@ const registerErrorHandler = (app) => {
 
 const registerPlugins = (app) => {
   app
-    .register(fastifyReverseRoutes.plugin)
     .register(fastifyStatic, {
       root: path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist'),
       prefix: '/assets/',

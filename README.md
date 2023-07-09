@@ -13,7 +13,6 @@ docker run -p 3000:3000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOK
 
 ## Requirements
 
-* Node 14.x
 * Make
 
 ## Install

@@ -7,7 +7,7 @@ compose-install:
 	docker-compose run app make install
 
 compose-bash:
-	docker-compose run app bash
+	docker compose run app bash
 
 compose-lint:
 	docker-compose run app make lint
