@@ -11,6 +11,6 @@ localhost, devops-example.test {
 	}
 
 	log {
-		format single_field common_log
+		# format single_field common_log
 	}
 }
