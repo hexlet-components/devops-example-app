@@ -2,4 +2,7 @@
 
 set -e
 
-npx fastify start server/plugin.js -a 0.0.0.0 -l info -P
+COMMAND="npx fastify start server/plugin.js -a 0.0.0.0 -l info --pretty-logs"
+
+echo $COMMAND
+exec $COMMAND

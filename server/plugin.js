@@ -59,3 +59,11 @@ export default (app, options) => {
 
   return app;
 };
+
+// export const options = {
+//   logger: {
+//     transport: {
+//       target: '@fastify/one-line-logger',
+//     },
+//   },
+// };
