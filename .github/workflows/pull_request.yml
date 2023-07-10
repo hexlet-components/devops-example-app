@@ -9,5 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - run: make compose-build
       - run: make compose-test-ci
       - run: make compose-lint-ci

@@ -11,6 +11,7 @@
   "author": "Hexlet",
   "license": "ISC",
   "dependencies": {
+    "@dnlup/fastify-traps": "^2.0.0",
     "@fastify/static": "^6.10.2",
     "bootstrap": "^5.3.0",
     "dotenv": "^16.3.1",
