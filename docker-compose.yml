@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: hexletcomponents/devops-example-app
+    image: hexletcomponents/devops-example-app:test
 
   caddy:
     build:
