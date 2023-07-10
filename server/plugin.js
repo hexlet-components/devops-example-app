@@ -6,6 +6,7 @@ import Pug from 'pug';
 import pointOfView from 'point-of-view';
 import fastifyStatic from '@fastify/static';
 import Rollbar from 'rollbar';
+import traps from '@dnlup/fastify-traps';
 
 import addRoutes from './routes.js';
 
@@ -48,6 +49,10 @@ const registerPlugins = (app) => {
       },
       includeViewExtension: true,
       templates: path.join(__dirname, '..', 'server', 'views'),
+    }).register(traps, {
+      onSignal(signal) {
+        console.debug(`Received signal ${signal}`);
+      },
     });
 };
 
