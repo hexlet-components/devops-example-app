@@ -3,7 +3,7 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
 import Pug from 'pug';
-import pointOfView from 'point-of-view';
+import pointOfView from '@fastify/view';
 import fastifyStatic from '@fastify/static';
 import Rollbar from 'rollbar';
 import traps from '@dnlup/fastify-traps';
