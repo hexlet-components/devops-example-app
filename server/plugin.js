@@ -66,8 +66,8 @@ export default (app, options) => {
 
 // export const options = {
 //   logger: {
-//     transport: {
-//       target: '@fastify/one-line-logger',
+//     options: {
+//       singleLine: true,
 //     },
 //   },
 // };
