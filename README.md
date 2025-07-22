@@ -11,6 +11,51 @@ docker run -p 3000:3000 -e SERVER_MESSAGE="Hexlet Awesome Server" -e ROLLBAR_TOK
 # open http://0.0.0.0:3000 in browser
  ```
 
+## Запуск на Mac M1/M2 (ARM) и других архитектурах
+
+Если при запуске контейнера возникает ошибка:
+
+```
+docker: no matching manifest for linux/arm64/v8 in the manifest list entries.
+```
+
+Возможные решения:
+
+### 1. Использовать эмуляцию x86 через флаг --platform
+
+```sh
+docker run --platform linux/amd64 -p 3000:3000 \
+    -e SERVER_MESSAGE="Hexlet Awesome Server" \
+    hexletcomponents/devops-example-app
+```
+
+Docker Desktop для Mac M1/M2 поддерживает эмуляцию x86 (amd64) через QEMU. Это работает для большинства Node.js-приложений, но может быть медленнее.
+
+### 2. Собрать образ локально под ARM
+
+```sh
+docker build -t hexletcomponents/devops-example-app .
+docker run -p 3000:3000 \
+    -e SERVER_MESSAGE="Hexlet Awesome Server" \
+    hexletcomponents/devops-example-app
+```
+
+### 3. Собрать и опубликовать multi-arch образ (рекомендовано)
+
+```sh
+docker buildx build --platform linux/amd64,linux/arm64 -t hexletcomponents/devops-example-app --push .
+```
+
+После этого команда `docker run ...` будет работать на любой архитектуре.
+
+### 4. Проверить, что эмуляция включена
+
+Если эмуляция не работает, выполните:
+
+```sh
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
+
 ## Requirements
 
 * Make
