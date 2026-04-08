@@ -4,3 +4,5 @@ node_modules
 .terraform
 *.backup
 .DS_Store
+playwright-report
+test-results
