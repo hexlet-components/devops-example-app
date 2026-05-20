@@ -11,13 +11,13 @@
   "author": "Hexlet",
   "license": "ISC",
   "dependencies": {
-    "@dnlup/fastify-traps": "^2.0.0",
-    "@fastify/static": "^6.10.2",
-    "@fastify/view": "^8.0.0",
+    "@dnlup/fastify-traps": "^3.1.0",
+    "@fastify/static": "^9.1.3",
+    "@fastify/view": "^11.1.1",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
-    "fastify": "^4.19.2",
-    "fastify-cli": "^5.7.1",
+    "fastify": "^5.8.5",
+    "fastify-cli": "^8.0.0",
     "lodash": "^4.18.1",
     "pug": "^3.0.4",
     "rollbar": "^3.1.0"
