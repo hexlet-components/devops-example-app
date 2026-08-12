@@ -4,6 +4,20 @@
 
 This is a simple node application that shows on the main page server on which it is running and report errors to [Bugsink](https://www.bugsink.com/).
 
+## Зачем это нужно
+
+Приложение-подопытный для курсов по DevOps. На главной странице показывает, на
+каком сервере оно запущено, и умеет намеренно падать, отправляя ошибку в
+[Bugsink](https://www.bugsink.com/).
+
+Обе особенности сделаны ради упражнений: по выводу имени сервера видно, куда
+именно приехал запрос за балансировщиком, а управляемая ошибка нужна, чтобы
+посмотреть на мониторинг в работе.
+
+Опубликовано образом `hexletcomponents/devops-example-app`, поэтому в уроках его
+запускают, не собирая: этим занимается курс по докеру. Рядом лежит обвязка,
+которую в этих курсах и разбирают: `ansible/`, `terraform/`, `docker-compose.yml`.
+
 ## Usage
 
 ```bash
