@@ -1,14 +1,14 @@
 // @ts-check
 
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import traps from '@dnlup/fastify-traps';
-import fastifyStatic from '@fastify/static';
-import pointOfView from '@fastify/view';
-import * as Sentry from '@sentry/node';
-import Pug from 'pug';
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import traps from "@dnlup/fastify-traps";
+import fastifyStatic from "@fastify/static";
+import pointOfView from "@fastify/view";
+import * as Sentry from "@sentry/node";
+import Pug from "pug";
 
-import addRoutes from './routes.js';
+import addRoutes from "./routes.js";
 
 const __dirname = fileURLToPath(path.dirname(import.meta.url));
 
@@ -18,19 +18,19 @@ const registerErrorHandler = (app) => {
 
     Sentry.captureException(error);
 
-    reply.status(500).view('500', { errorMessage });
+    reply.status(500).view("500", { errorMessage });
   });
 };
 
 const registerPlugins = (app) => {
   app
     .register(fastifyStatic, {
-      root: path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist'),
-      prefix: '/assets/',
+      root: path.join(__dirname, "..", "node_modules", "bootstrap", "dist"),
+      prefix: "/assets/",
     })
     .register(fastifyStatic, {
-      root: path.join(__dirname, '..', 'public'),
-      prefix: '/',
+      root: path.join(__dirname, "..", "public"),
+      prefix: "/",
       decorateReply: false,
     })
     .register(pointOfView, {
@@ -38,7 +38,7 @@ const registerPlugins = (app) => {
         pug: Pug,
       },
       includeViewExtension: true,
-      templates: path.join(__dirname, '..', 'server', 'views'),
+      templates: path.join(__dirname, "..", "server", "views"),
     })
     .register(traps, {
       onSignal(signal) {
@@ -58,7 +58,7 @@ export default (app, _options) => {
 export const options = {
   logger: {
     transport: {
-      target: 'pino-pretty',
+      target: "pino-pretty",
       options: {
         singleLine: true,
       },

@@ -1,12 +1,12 @@
 // @ts-check
 
 export default (app) => {
-  app.get('/', (_req, reply) => {
+  app.get("/", (_req, reply) => {
     const serverMessage = process.env.SERVER_MESSAGE;
 
-    reply.view('index', { serverMessage });
+    reply.view("index", { serverMessage });
   });
-  app.get('/error', { name: 'error' }, () => {
-    throw new Error('Oops! Something went wrong!');
+  app.get("/error", { name: "error" }, () => {
+    throw new Error("Oops! Something went wrong!");
   });
 };
