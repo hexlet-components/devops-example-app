@@ -41,22 +41,23 @@ docker-push:
 setup: env-prepare install
 
 install:
-	npm ci
+	pnpm install --frozen-lockfile
 
 start:
-	npm start
+	pnpm start
 
 lint:
-	npx biome check .
+	pnpm --silent run lint
+	pnpm --silent run format:check
 
 lint-fix:
-	npx biome check --write .
+	pnpm --silent run lint:fix
 
 update-deps:
-	npx ncu -u
+	pnpm exec ncu -u
 
 test:
-	npm test
+	pnpm test
 
 env-prepare:
 	cp -n .env.example .env || true
