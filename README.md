@@ -65,8 +65,8 @@ Bugsink runs as a local service via Docker Compose. To get the DSN:
 
 ```bash
 make test        # запустить тесты
-make lint        # проверить код (Biome)
-make lint-fix    # автоисправление (Biome)
+make lint        # проверить код (oxlint)
+make lint-fix    # автоисправление (oxfmt + oxlint)
 make update-deps # обновить зависимости (ncu -u)
 ```
 
