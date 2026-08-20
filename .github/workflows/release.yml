@@ -13,23 +13,11 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v2
-      # - uses: docker/setup-qemu-action@v1
-      # - uses: docker/setup-buildx-action@v1
-
       - uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # imagetools работает с манифестом в реестре, а не со скачанным образом.
-      # Через pull/tag/push мультиарх схлопывался: pull забирает образ только
-      # под платформу раннера, и версионный тег получался одноархитектурным.
-      - run: |
-          docker buildx imagetools create \
-            --tag ${{ env.APP_IMAGE_NAME }}:${{ github.ref_name }} \
-            ${{ env.APP_IMAGE_NAME }}:latest
-      - run: |
-          docker buildx imagetools create \
-            --tag ${{ env.CADDY_IMAGE_NAME }}:${{ github.ref_name }} \
-            ${{ env.CADDY_IMAGE_NAME }}:latest
+      # imagetools переносит манифест целиком; pull/tag/push схлопывал его в платформу раннера
+      - run: docker buildx imagetools create -t ${{ env.APP_IMAGE_NAME }}:${{ github.ref_name }} ${{ env.APP_IMAGE_NAME }}:latest
+      - run: docker buildx imagetools create -t ${{ env.CADDY_IMAGE_NAME }}:${{ github.ref_name }} ${{ env.CADDY_IMAGE_NAME }}:latest
