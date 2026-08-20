@@ -22,10 +22,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - run: docker pull ${{ env.APP_IMAGE_NAME }}:latest
-      - run: docker tag ${{ env.APP_IMAGE_NAME }}:latest ${{ env.APP_IMAGE_NAME }}:${{ github.ref_name }}
-      - run: docker push ${{ env.APP_IMAGE_NAME }}:${{ github.ref_name }}
-
-      - run: docker pull ${{ env.CADDY_IMAGE_NAME }}:latest
-      - run: docker tag ${{ env.CADDY_IMAGE_NAME }}:latest ${{ env.CADDY_IMAGE_NAME }}:${{ github.ref_name }}
-      - run: docker push ${{ env.CADDY_IMAGE_NAME }}:${{ github.ref_name }}
+      # imagetools работает с манифестом в реестре, а не со скачанным образом.
+      # Через pull/tag/push мультиарх схлопывался: pull забирает образ только
+      # под платформу раннера, и версионный тег получался одноархитектурным.
+      - run: |
+          docker buildx imagetools create \
+            --tag ${{ env.APP_IMAGE_NAME }}:${{ github.ref_name }} \
+            ${{ env.APP_IMAGE_NAME }}:latest
+      - run: |
+          docker buildx imagetools create \
+            --tag ${{ env.CADDY_IMAGE_NAME }}:${{ github.ref_name }} \
+            ${{ env.CADDY_IMAGE_NAME }}:latest
