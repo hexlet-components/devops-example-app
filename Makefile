@@ -35,10 +35,13 @@ compose:
 compose-down:
 	docker compose down -v --remove-orphans
 
-setup: env-prepare install
+setup: env-prepare install build
 
 install:
 	pnpm install --frozen-lockfile
+
+build:
+	pnpm run build
 
 start:
 	pnpm start

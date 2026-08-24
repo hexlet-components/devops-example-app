@@ -24,8 +24,9 @@ const registerErrorHandler = (app) => {
 
 const registerPlugins = (app) => {
   app
+    // Собранный css лежит в dist: его пишет vite из src/styles.css.
     .register(fastifyStatic, {
-      root: path.join(__dirname, "..", "node_modules", "bootstrap", "dist"),
+      root: path.join(__dirname, "..", "dist"),
       prefix: "/assets/",
     })
     .register(fastifyStatic, {

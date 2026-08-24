@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
-  .alert.alert-danger
-    h1.alert-heading Внимание, тут что-то не так!
-    p !{errorMessage}
+  .mx-auto.max-w-3xl.px-4.py-12
+    .rounded.border.border-red-200.bg-red-50.p-6.text-red-800
+      h1.mb-2.text-2xl.font-bold Внимание, тут что-то не так!
+      p !{errorMessage}
