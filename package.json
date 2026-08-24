@@ -5,6 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "vite build",
     "test": "vitest run",
     "start": "bin/start.sh",
     "lint": "oxlint --config=.oxlintrc.json .",
@@ -19,7 +20,6 @@
     "@fastify/static": "^10.1.2",
     "@fastify/view": "^12.0.0",
     "@sentry/node": "^10.68.0",
-    "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
     "fastify": "^5.10.0",
     "fastify-cli": "^8.0.0",
@@ -28,10 +28,13 @@
     "pug": "^3.0.4"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "npm-check-updates": "^23.0.0",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
     "pino": "^10.3.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.2",
     "vitest": "^4.1.10"
   },
   "engines": {

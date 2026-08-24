@@ -1,16 +1,14 @@
 extends layout.pug
 
 block content
-  .container.mt-5
-    .card
-      .card-body.p-5.bg-light
-        .row
-          .col-2
-            img.img-fluid(src="/images/app.png")
-          .col-auto
-            .display-4 Привет от Хекслета!
-            hr
-            if serverMessage
-              p.lead Приложение запущено и передает сообщение: !{serverMessage}
-            else
-              p.lead Приложение запущено, но сообщение сервера не установлено!
+  .mx-auto.max-w-3xl.px-4.py-12
+    .rounded-lg.border.border-gray-200.bg-white.p-8.shadow-sm
+      .flex.flex-wrap.items-center.gap-8
+        img.w-40(src="/images/app.png" alt="Hexlet")
+        div
+          p.text-3xl.font-bold Привет от Хекслета!
+          hr.my-4.border-gray-200
+          if serverMessage
+            p.text-lg Приложение запущено и передает сообщение: !{serverMessage}
+          else
+            p.text-lg Приложение запущено, но сообщение сервера не установлено!
