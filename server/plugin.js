@@ -6,7 +6,7 @@ import traps from "@dnlup/fastify-traps";
 import fastifyStatic from "@fastify/static";
 import pointOfView from "@fastify/view";
 import * as Sentry from "@sentry/node";
-import Pug from "pug";
+import { Eta } from "eta";
 
 import addRoutes from "./routes.js";
 
@@ -36,9 +36,8 @@ const registerPlugins = (app) => {
     })
     .register(pointOfView, {
       engine: {
-        pug: Pug,
+        eta: new Eta(),
       },
-      includeViewExtension: true,
       templates: path.join(__dirname, "..", "server", "views"),
     })
     .register(traps, {

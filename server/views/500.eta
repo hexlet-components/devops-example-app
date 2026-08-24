@@ -1,0 +1,7 @@
+<% layout("./layout") %>
+<div class="mx-auto max-w-3xl px-4 py-12">
+  <div class="rounded border border-red-200 bg-red-50 p-6 text-red-800">
+    <h1 class="mb-2 text-2xl font-bold">Внимание, тут что-то не так!</h1>
+    <p><%~ it.errorMessage %></p>
+  </div>
+</div>

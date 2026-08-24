@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <title>DevOps Example App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/main.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <%~ it.body %>
+  </body>
+</html>
