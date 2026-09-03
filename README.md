@@ -6,17 +6,12 @@ This is a simple node application that shows on the main page server on which it
 
 ## Зачем это нужно
 
-Приложение-подопытный для курсов по DevOps. На главной странице показывает, на
-каком сервере оно запущено, и умеет намеренно падать, отправляя ошибку в
+Приложение-подопытный для курсов по DevOps. На главной странице показывает, на каком сервере оно запущено, и умеет намеренно падать, отправляя ошибку в
 [Bugsink](https://www.bugsink.com/).
 
-Обе особенности сделаны ради упражнений: по выводу имени сервера видно, куда
-именно приехал запрос за балансировщиком, а управляемая ошибка нужна, чтобы
-посмотреть на мониторинг в работе.
+Обе особенности сделаны ради упражнений: по выводу имени сервера видно, куда именно приехал запрос за балансировщиком, а управляемая ошибка нужна, чтобы посмотреть на мониторинг в работе.
 
-Опубликовано образом `hexletcomponents/devops-example-app`, поэтому в уроках его
-запускают, не собирая: этим занимается курс по докеру. Рядом лежит обвязка,
-которую в этих курсах и разбирают: `ansible/`, `terraform/`, `docker-compose.yml`.
+Опубликовано образом `hexletcomponents/devops-example-app`, поэтому в уроках его запускают, не собирая: этим занимается курс по докеру. Рядом лежит обвязка, которую в этих курсах и разбирают: `ansible/`, `terraform/`, `docker-compose.yml`.
 
 ## Usage
 
@@ -53,8 +48,7 @@ Bugsink runs as a local service via Docker Compose. To get the DSN:
 1. Start the services: `make compose`
 2. Open <http://localhost:8000> and log in (`admin@example.com` / `admin`)
 3. Create a new project
-4. Copy the DSN from the project settings — it looks like:
-   `http://<key>@bugsink:8000/<project_id>`
+4. Copy the DSN from the project settings — it looks like: `http://<key>@bugsink:8000/<project_id>`
 5. Add it to your `.env` file:
 
    ```env
