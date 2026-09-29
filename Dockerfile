@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends make \
 
 # corepack из образов Node 26 убран, поэтому pnpm ставится напрямую. Версия
 # берётся из поля packageManager, чтобы образ и разработка совпадали.
-RUN npm install -g pnpm@11.20.0
+RUN npm install -g pnpm@12.6.0
 
 WORKDIR /app
 
