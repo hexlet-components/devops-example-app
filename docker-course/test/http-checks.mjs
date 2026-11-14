@@ -102,7 +102,7 @@ test("file secrets are read without putting the value into errors", async (t) =>
   assert.equal(database.options.password, "test-file-password");
   await database.end();
   assert.throws(
-    () => createDatabase({ PGHOST: "127.0.0.1", PGPASSWORD_FILE: file, PGPASSWORD: "other" }),
+    () => createDatabase({ PGHOST: "127.0.0.1", PGPASSWORD_FILE: file, PGPASSWORD: "other" }), // betterleaks:allow -- test fixture
     /Use either PGPASSWORD or PGPASSWORD_FILE/,
   );
 });

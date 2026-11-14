@@ -1,0 +1,4 @@
+# Public tutorial credentials and a test fixture, never production accounts.
+e6ca6ebdc789e84c57351c17bea86b61d29698a0:docker-course/test/http-checks.mjs:generic-password:105
+e6ca6ebdc789e84c57351c17bea86b61d29698a0:docker-course/states/docker-compose/compose.yaml:generic-password:12
+e6ca6ebdc789e84c57351c17bea86b61d29698a0:docker-course/states/docker-compose/compose.yaml:generic-password:18

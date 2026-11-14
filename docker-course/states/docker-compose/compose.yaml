@@ -9,13 +9,13 @@ services:
       PGHOST: db
       PGUSER: course
       PGDATABASE: course
-      PGPASSWORD: course-password
+      PGPASSWORD: course-password # betterleaks:allow -- public tutorial credential
   db:
     image: postgres:17-bookworm
     environment:
       POSTGRES_USER: course
       POSTGRES_DB: course
-      POSTGRES_PASSWORD: course-password
+      POSTGRES_PASSWORD: course-password # betterleaks:allow -- public tutorial credential
     volumes:
       - data:/var/lib/postgresql/data
 volumes:
