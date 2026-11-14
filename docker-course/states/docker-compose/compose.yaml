@@ -1,0 +1,22 @@
+name: docker-course
+services:
+  app:
+    build: .
+    image: docker-course:1.0.0
+    ports:
+      - 127.0.0.1:8080:3000
+    environment:
+      PGHOST: db
+      PGUSER: course
+      PGDATABASE: course
+      PGPASSWORD: course-password
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: course
+      POSTGRES_DB: course
+      POSTGRES_PASSWORD: course-password
+    volumes:
+      - data:/var/lib/postgresql/data
+volumes:
+  data: {}

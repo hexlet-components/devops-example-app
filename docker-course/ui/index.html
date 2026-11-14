@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Заметки в Docker</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+        color: #17223a;
+        background: #eef2f8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      header {
+        background: #142743;
+        color: white;
+        padding: 18px 7vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header strong {
+        font-size: 18px;
+      }
+      header span {
+        font-size: 14px;
+        color: #b9c9e1;
+      }
+      main {
+        max-width: 1060px;
+        margin: 48px auto;
+        padding: 0 24px;
+      }
+      .label {
+        color: #526987;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: 38px;
+        margin: 8px 0 14px;
+        line-height: 1.2;
+      }
+      .description {
+        max-width: 650px;
+        color: #526279;
+        margin-bottom: 28px;
+      }
+      .status {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .badge {
+        display: inline-block;
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 14px;
+        background: #e0e8f6;
+      }
+      .badge.ready {
+        color: #176847;
+        background: #ddf4e8;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
+        gap: 24px;
+      }
+      section,
+      aside {
+        background: white;
+        border: 1px solid #dce3ee;
+        border-radius: 16px;
+        padding: 28px;
+      }
+      h2 {
+        font-size: 21px;
+        margin: 0 0 18px;
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      input {
+        width: 100%;
+        border: 1px solid #b9c6d8;
+        padding: 13px 14px;
+        border-radius: 8px;
+        font: inherit;
+      }
+      button {
+        border: 0;
+        border-radius: 8px;
+        background: #355be6;
+        color: white;
+        font: inherit;
+        font-weight: 600;
+        padding: 12px 18px;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 24px 0 0;
+      }
+      li {
+        border-top: 1px solid #e5eaf2;
+        padding: 16px 0;
+        overflow-wrap: anywhere;
+      }
+      .note-id {
+        color: #70829c;
+        font-size: 12px;
+        display: block;
+        margin-bottom: 4px;
+      }
+      dl {
+        margin: 0;
+      }
+      dt {
+        color: #687b96;
+        font-size: 13px;
+        margin-top: 18px;
+      }
+      dd {
+        margin: 4px 0 0;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+      }
+      .hint {
+        color: #62738c;
+        font-size: 14px;
+        margin: 20px 0 0;
+      }
+      #error {
+        color: #a33232;
+        min-height: 24px;
+        font-size: 14px;
+      }
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 30px;
+        }
+        header span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><strong>hexlet · docker</strong><span>Учебное приложение</span></header>
+    <main>
+      <div class="label">Контейнеры · сеть · постоянные данные</div>
+      <h1>Заметки в Docker</h1>
+      <p class="description">
+        Приложение принимает HTTP-запросы и хранит заметки в PostgreSQL. Здесь можно проверить
+        версию образа и сохранность записи после пересоздания контейнера.
+      </p>
+      <div class="status">
+        <span class="badge" id="version">Версия загружается</span
+        ><span class="badge" id="readiness">Проверяем готовность</span>
+      </div>
+      <div class="grid">
+        <section>
+          <h2>Мои заметки</h2>
+          <form id="form">
+            <label for="text">Новая заметка</label
+            ><input
+              id="text"
+              name="text"
+              placeholder="Например, данные пережили пересоздание"
+              maxlength="1000"
+              required
+            /><button id="submit" disabled>Сохранить заметку</button>
+          </form>
+          <div id="error" role="status"></div>
+          <ul id="notes"></ul>
+        </section>
+        <aside>
+          <h2>Проверка приложения</h2>
+          <dl>
+            <dt>Сообщение сервера</dt>
+            <dd id="message">Загружается</dd>
+            <dt>Хранение заметок</dt>
+            <dd id="storage">Проверяем подключение</dd>
+            <dt>Адрес проверки готовности</dt>
+            <dd>/ready</dd>
+          </dl>
+          <p class="hint">
+            Версия берётся из файла внутри образа. Сообщение сервера можно заменить параметром
+            запуска.
+          </p>
+        </aside>
+      </div>
+    </main>
+    <script>
+      const select = (id) => document.getElementById(id);
+      const loadNotes = async () => {
+        const response = await fetch("/notes");
+        if (!response.ok) {
+          select("storage").textContent = "База не подключена или недоступна";
+          select("submit").disabled = true;
+          return;
+        }
+        const notes = await response.json();
+        select("notes").replaceChildren();
+        for (const note of notes) {
+          const item = document.createElement("li");
+          const id = document.createElement("span");
+          id.className = "note-id";
+          id.textContent = `Заметка #${note.id}`;
+          item.append(id, document.createTextNode(note.text));
+          select("notes").append(item);
+        }
+        select("storage").textContent = "PostgreSQL · данные в базе";
+        select("submit").disabled = false;
+      };
+      const load = async () => {
+        const response = await fetch("/");
+        const info = await response.json();
+        select("message").textContent = info.message;
+        select("version").textContent = `Образ ${info.version}`;
+        const readiness = await fetch("/ready");
+        select("readiness").textContent = readiness.ok
+          ? "Приложение готово"
+          : "Приложение не готово";
+        select("readiness").classList.toggle("ready", readiness.ok);
+        await loadNotes();
+      };
+      select("form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        select("submit").disabled = true;
+        try {
+          const response = await fetch("/notes", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ text: select("text").value }),
+          });
+          if (!response.ok) throw new Error("Не удалось сохранить заметку");
+          select("text").value = "";
+          select("error").textContent = "";
+          await loadNotes();
+        } catch (error) {
+          select("error").textContent = error.message;
+          select("submit").disabled = false;
+        }
+      });
+      load().catch(() => {
+        select("error").textContent = "Сервер недоступен. Проверьте состояние контейнера.";
+      });
+    </script>
+  </body>
+</html>

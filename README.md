@@ -13,6 +13,10 @@ This is a simple node application that shows on the main page server on which it
 
 Опубликовано образом `hexletcomponents/devops-example-app`, поэтому в уроках его запускают, не собирая: этим занимается курс по докеру. Рядом лежит обвязка, которую в этих курсах и разбирают: `ansible/`, `terraform/`, `docker-compose.yml`.
 
+## Учебная редакция для курса Docker
+
+В каталоге [docker-course](docker-course/README.md) находится приложение заметок для курса Docker. Оно содержит независимые входные состояния уроков, готовые проверки PostgreSQL и отдельные Dockerfile для сборки и разработки.
+
 ## Usage
 
 ```bash

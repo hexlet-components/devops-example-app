@@ -1,0 +1,30 @@
+name: docker-course
+services:
+  app:
+    build: .
+    image: docker-course:1.0.0
+    ports:
+      - 127.0.0.1:8080:3000
+    environment:
+      PGHOST: db
+      PGUSER: course
+      PGDATABASE: course
+      PGPASSWORD_FILE: /run/secrets/db_password
+      SERVER_MESSAGE: ${SERVER_MESSAGE:-Hello from Docker}
+    secrets:
+      - db_password
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: course
+      POSTGRES_DB: course
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    volumes:
+      - data:/var/lib/postgresql/data
+    secrets:
+      - db_password
+volumes:
+  data: {}
+secrets:
+  db_password:
+    file: ./secrets/db-password.txt

@@ -1,0 +1,4 @@
+FROM node:24-bookworm-slim
+COPY sample.txt /sample.txt
+RUN rm /sample.txt
+CMD ["node", "--version"]

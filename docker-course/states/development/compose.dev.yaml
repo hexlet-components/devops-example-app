@@ -1,0 +1,12 @@
+services:
+  app:
+    image: docker-course:dev
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./message.txt
+          target: /app/message.txt
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./pnpm-lock.yaml

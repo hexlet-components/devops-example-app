@@ -1,0 +1,71 @@
+name: docker-course
+services:
+  app:
+    image: ${APP_IMAGE:?Укажите APP_IMAGE}
+    ports:
+      - 127.0.0.1:8080:3000
+    environment:
+      PGHOST: db
+      PGUSER: course
+      PGDATABASE: course
+      PGPASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - scripts/healthcheck.mjs
+      interval: 2s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: course
+      POSTGRES_DB: course
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    volumes:
+      - data:/var/lib/postgresql/data
+      - ./db-init/slow-start.sql:/docker-entrypoint-initdb.d/slow-start.sql:ro
+    secrets:
+      - db_password
+    healthcheck:
+      test:
+        - CMD
+        - pg_isready
+        - -h
+        - 127.0.0.1
+        - -U
+        - course
+        - -d
+        - course
+      interval: 2s
+      timeout: 2s
+      retries: 20
+      start_period: 10s
+  init:
+    image: ${APP_IMAGE:?Укажите APP_IMAGE}
+    command:
+      - node
+      - scripts/init.mjs
+    environment:
+      PGHOST: db
+      PGUSER: course
+      PGDATABASE: course
+      PGPASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  data: {}
+secrets:
+  db_password:
+    file: ./secrets/db-password.txt

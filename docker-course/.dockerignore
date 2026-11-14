@@ -1,0 +1,16 @@
+node_modules
+.git
+.env
+.env.*
+secrets
+states
+dependency-update
+db-init
+empty
+test
+README.md
+prepare.sh
+prepare-image.sh
+Dockerfile*
+compose*.yaml
+public
